@@ -1,0 +1,42 @@
+<h1>Welcome to a Working Twitter!</h1>
+<% if flash[:success] %>
+  <div class="success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<p>
+  If you're not logged in, please create an account 
+  <%= link_to "here", "/users/new" %>.
+</p>
+<p>
+  Your are signed in as <%= @user.handle %>. 
+</p>
+<%= form_for(@new_tweet, url: '/tweets', method: 'post') do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Tweet!", :class => "btn btn-success" %>
+  </div>
+<% end %>
+
+<p class="bold">Here are some tweetz:</p>
+
+<div class="tweets">
+  <% @tweets.each do |tweet| %>
+    <div class="tweet">
+      <%= tweet.body %>
+      <span class="grey italic">
+        created at <%= tweet.created_at %> by <%= tweet.user.handle %>
+      </span>
+      <% if tweet.user == User.last %>
+        <%= link_to "Delete", "/tweets/#{tweet.id}", :method => :delete %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
