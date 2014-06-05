@@ -1,0 +1,9 @@
+<h1>Welcome <%= @user.handle %></h1>
+<p>Your bio:</p>
+<p><%= @user.bio %></p>
+
+<p>Your email:</p>
+<p><%= @user.email %></p>
+
+<%= link_to "Edit", "/profile/edit", :class => "btn btn-info" %>
+<%= link_to "DELETE ACCOUNT", "...", :method => "delete", :class => "btn btn-danger" %>

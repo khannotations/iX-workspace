@@ -10,6 +10,16 @@
 <body>
 
 <div class="container">
+  <% if flash[:success] %>
+    <div class="success">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+  <% if flash[:error] %>
+    <div class="error">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <%= yield %>
 </div>
 

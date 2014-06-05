@@ -8,7 +8,9 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = User.last # Pretend this is the "signed in" user
-    @tweet.save
+    if !@tweet.save
+      flash[:error] = @tweet.errors.full_messages.join("\n")
+    end
 
     redirect_to root_path
   end

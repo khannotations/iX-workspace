@@ -2,10 +2,15 @@ Rails.application.routes.draw do
 
   get 'users/new' => 'users#new'
   post 'users' => 'users#create'
+  get 'profile' => 'users#profile'
+  get 'profile/edit' => 'users#edit'
+  put 'profile' => 'users#update'
 
   # The route is going to tell us which tweet to delete
   # tweets?id=...
   delete 'tweets/:id' => 'tweets#delete'
+  # If I wanted to update tweets
+  # put 'tweets/:id' => 'tweets#update'
   post 'tweets' => 'tweets#create'
 
   root 'tweets#index'
